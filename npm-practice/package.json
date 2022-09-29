@@ -1,0 +1,14 @@
+{
+  "name": "npm-practice",
+  "version": "1.0.0",
+  "description": "test app for npm",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Nelia",
+  "license": "ISC",
+  "dependencies": {
+    "request": "^2.88.2"
+  }
+}
