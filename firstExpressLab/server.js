@@ -19,13 +19,24 @@ app.get('/greeting/:name', (req, res) => {
 
 	// res.send(`Hello ${name}`)
     // res.send(`What's up, ${name}`)
-    res.send(`${name}! It's so great to see you!`)
+    // res.send(`${name}! It's so great to see you!`)
 })
 
+// Tip Calculator
+// our app should have a route of '/tip' and it should expect 2 params. One should be total and one should be tipPercentage.
+// When hitting the route, the page should display how much your tip will be based on the total amount of the bill and the tip percentage. (ex. hitting '/tip/100/20' should display 20 on the page).
 
-app.listen(3000, function() {
-    console.log('Listening on port 3000');
-});
+app.get('/tip/:total/:tipPercentage', (req, res) => {
+    console.log(req.params);
+    const {total, tipPercentage} = req.params
+    let tip = total * (tipPercentage/100)
+    tip = tip.toFixed(2)
+	console.log(`${tip}`);
+    res.send(`${tip}`)
+    
+})
 
+app.listen(PORT, () => {
+    console.log(`Server running on port: ${PORT}`);
 
-
+})
