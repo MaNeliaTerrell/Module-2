@@ -11,7 +11,7 @@ app.get('/', function(req, res) {
 
 app.get('/pokemon', function(req, res) {
     console.log(req.params);
-    res.send('pokemon')
+    res.send(pokemon)
 })
 
 app.listen(PORT, () => {
