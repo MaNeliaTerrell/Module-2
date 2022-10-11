@@ -23,6 +23,12 @@ app.get('/pokemon', (req, res)=>{
     res.render('Index', { pokemon: pokemonArr });
 });
 
+// NEW
+
+app.get('/pokemon/new', (req, res) => {
+    res.render('New', {pokemon: pokemonArr})
+})
+
 //  SHOW
 app.get('/pokemon/:id', (req, res)=>{
     const { id } = req.params
@@ -30,8 +36,10 @@ app.get('/pokemon/:id', (req, res)=>{
     res.render("Show", { pokemon: pokemonArr[id]})
 });
 
-// NEW
+// app.put('/pokemon/:id/edit', (req, res) =. {
+//     const {id} = req.params
 
+// })
 
 
 app.listen(PORT, () => {
