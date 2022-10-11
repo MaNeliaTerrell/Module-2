@@ -8,11 +8,12 @@ class Show extends React.Component {
             <div style={myStyles.container}>
                 <h1>Gotta Catch 'Em All</h1>
 
-                <ul>
-                    <li>{pokemon.name}</li>
-                    <a><img src={pokemon.img} width="200" height="200" /></a>
+                    <h2>{pokemon.name}</h2>
+                    <img src={pokemon.img} width="200" height="200" />
+                    <br />
+                    <br />
+                    <a href='/pokemon'>BACK</a>
                     
-                </ul>
             </div>
         );
     }
