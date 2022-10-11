@@ -1,21 +1,28 @@
-// const React = require('react');
-// const pokemon = require('./Models/pokemon')
+const React = require('react');
+const pokemon = require('./Models/pokemon')
 
-// class Show extends React.Component {
-//   render() {
-//     const {pokemon} = this.props
-//     return 
-//     <div>
-//         <h1>Show All Pokemon</h1>
-//     </div>;
-//   }
-// }
+class Show extends React.Component {
+  render() {
+    const {pokemon} = this.props
+    return 
+    <div>
+        <h1>Show Page</h1>
 
-// const myStyles = {
-//   container: {color: 'navyblue',
-//   backgroundColor: '#000000',
-// }};
+        <ul>
+            <li>
+
+            </li>
+
+        </ul>
+    </div>;
+  }
+}
+
+const myStyles = {
+  container: {color: 'navyblue',
+  backgroundColor: 'aqua',
+}};
 
 
 
-// module.exports = Show;
+module.exports = Show;
