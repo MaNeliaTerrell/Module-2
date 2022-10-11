@@ -20,7 +20,10 @@ app.get('/', function(req, res) {
 // })
 
 app.get('/pokemon', (req, res)=>{
+
+    
     res.render('Index', { pokemon: pokemonArr });
+
 });
 
 
