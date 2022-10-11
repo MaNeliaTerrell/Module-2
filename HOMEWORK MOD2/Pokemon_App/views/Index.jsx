@@ -2,6 +2,7 @@ const React = require('react');
 const pokemonArr = require('../Models/pokemon');
 
 
+
 class Index extends React.Component {
 
   render() {
@@ -19,9 +20,7 @@ class Index extends React.Component {
           <li key={idx}>
             <a href={`/pokemon/${idx}`}>{pokemon.name}</a>
 
-            <a href={`/pokemon/${idx}`}>
-              <img src={pokemon.img} width="200" height="200" />
-            </a>
+
           </li>
         ))}
         </ul>
@@ -36,6 +35,8 @@ class Index extends React.Component {
 const myStyles = {
   container: {
     color: 'blue',
+    fontSize: '25px',
+    fontFamily:'Arial',
     backgroundColor: 'yellow',
     textTransform: 'capitalize',
   }
