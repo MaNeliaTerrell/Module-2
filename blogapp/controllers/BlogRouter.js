@@ -9,51 +9,65 @@ router.get('/', async (req, res) => {
     try {
         const blogs = await BlogModel.find({})
         res.render('Blogs/Blogs', {blogs: blogs})
-        console.log(blogs);
+        // console.log(blogs);
     } catch (error) {
         console.log(error);
         res.status(403).send('Cannot Get')
     }
 })
 
-// GET: Blog by ID
-router.get('/:id', async (req, res) => {
+
+router.get('/new', async (req, res) => {
     try {
-        const blog = await BlogModel.findById(req.params.id)
-        res.render('Blogs/Show', {blog: blog})
-        console.log(blog);
+        res.render('Blogs/New')
     } catch (error) {
         console.log(error);
         res.status(403).send('Cannot get')
     }
 })
 
+// GET: Blog by ID
 
-// POST:  CREATE a NEW BLOG
-
-router.post('/', async (req, res) => {
+router.get('/:id', async (req, res) => {
     try {
-        const newBlog = await BlogModel.create(req.body)
-        // res.send(newBlog)
-        res.render(newBlog)
+        const blog = await BlogModel.findById(req.params.id)
+        res.render('Blogs/Show', {blog: blog})
+        // console.log(blog);
     } catch (error) {
         console.log(error);
-        res.status(403).send('Cannot create')
+        res.status(403).send('Cannot get')
     }
-    
 })
+
+// POST: Create a New Blog
+
+router.post("/", async (req, res) => {
+    try {
+      if (req.body.sponsored === "on") {
+        req.body.sponsored = true;
+      } else {
+        req.body.sponsored = false;
+      }
+      const newBlog = await BlogModel.create(req.body);
+      res.redirect("/blog");
+    } catch (error) {
+      console.log(error);
+      res.status(403).send("Cannot create");
+    }
+  });
 
 //  PUT:    UPDATE BY ID
 
 router.put('/:id', async (req, res) => {
+    console.log(req.body);
     try {
-        const updatedBlog = await BlogModel.findByIdAndUpdate(req.params.id, req.body, {'returnDocument': "after"})
-        res.send(updatedBlog)
+        const {id} = req.params
+        const updatedBlog = await BlogModel.findByIdAndUpdate(req.params.id, req.body, {'returnDocument' : "after"})
+        res.redirect(`/blog`)
     } catch (error) {
         console.log(error);
-        res.status(403).send('Cannot put')
+        res.status(403).send('Cannot update')
     }
-    
 })
 
 // DELETE
