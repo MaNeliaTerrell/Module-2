@@ -21,6 +21,12 @@ class Blogs extends React.Component {
                     <br />
                     <p style={myStyle.font3}>{blog.body}</p>
                     <h4 style={myStyle.font4}>By: {blog.author}</h4>
+
+                    <form action={`/blog/${blog._id}?_method=DELETE`} method='POST'>
+                  <input type='submit' value='Delete' />
+                </form>
+                <a href={`/blog/${blog._id}/edit`}><button>Edit</button></a>
+                
                 </div>
             ))}
             </section>

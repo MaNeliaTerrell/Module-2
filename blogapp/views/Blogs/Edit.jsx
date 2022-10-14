@@ -1,20 +1,24 @@
 const React = require('react')
+const Navbar = require('../components/Navbar')
 
 class Edit extends React.Component {
     render(){
-        console.log(this.props.blog);
-        const {blog} = this.props
+        
+        const {blogs} = this.props
         return(
             <div>
+
+            <Navbar/>
                 <h1>Edit Blog Page</h1>
-            <form action={`/blog/${this.props.blog._id}?_method=PUT`} method="POST">
-                title: <input type="text" name="name" defaultValue={blog.title} />
+            <form action={`/blog/${blogs._id}?_method=PUT`} method="POST">
+                title: <input type="text" name='title' defaultValue={blogs.title} />
                 <br />
-                body: <input type='text' name='body'defaultValue={blog.body} />
+                body: <input type='text' name='body'defaultValue={blogs.body} />
                 <br />
-                author: <input type='text' name='author'defaultValue={blog.author} />
-                likes: <input type='text' name='likes'defaultValue={blog.likes} />
-                sponsored: { blog.sponsored ? <input type='checkbox' name='sponsored' defaultChecked /> : <input type='checkbox'
+                author: <input type='text' name='author'defaultValue={blogs.author} />
+                likes: <input type='text' name='likes'defaultValue={blogs.likes} />
+                sponsored: { blogs.sponsored ? <input type='checkbox' name='sponsored' defaultChecked /> : 
+                <input type='checkbox'
                 name='sponsored'/>}
                 <br />
                 <input type="submit" value='Update Blog'/>

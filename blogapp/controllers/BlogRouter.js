@@ -38,6 +38,17 @@ router.get('/:id', async (req, res) => {
         res.status(403).send('Cannot get')
     }
 })
+router.get(`/:id/edit`, async (req, res) => {
+    try{
+        const blogs = await BlogModel.findById(req.params.id)
+        res.render(`Blogs/Edit`, {blogs: blogs})
+    }
+    catch(error){
+        console.log(error);
+        res.status(403).send(`Cannot edit`);
+    }
+})
+
 
 // POST: Create a New Blog
 
@@ -59,9 +70,7 @@ router.post("/", async (req, res) => {
 //  PUT:    UPDATE BY ID
 
 router.put('/:id', async (req, res) => {
-    console.log(req.body);
     try {
-        const {id} = req.params
         const updatedBlog = await BlogModel.findByIdAndUpdate(req.params.id, req.body, {'returnDocument' : "after"})
         res.redirect(`/blog`)
     } catch (error) {
@@ -75,7 +84,7 @@ router.put('/:id', async (req, res) => {
 router.delete ('/:id', async (req, res) => {
     try {
         await BlogModel.findByIdAndRemove(req.params.id)
-        res.send('Blog Deleted')
+        res.redirect(`/blog`)
     } catch (error) {
         console.log(error);
         res.status(403).send('Cannot delete')
