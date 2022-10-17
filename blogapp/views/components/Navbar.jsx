@@ -4,6 +4,10 @@ class Navbar extends React.Component {
     render () {
         return (
 
+           
+            <div>
+
+
             <nav>
                 <a href='/'>Home</a>
                 <br/>
@@ -11,10 +15,11 @@ class Navbar extends React.Component {
                 <br/>
                 <a href='/blog/new'>Create New Blog</a>
                 <br/>
-                <a href='/signin'>Sign up</a>
+                <a href='/user/signup'>Signin/up</a>
+                <br/>
+                <a href='/user/signout'>Sign out</a>
             </nav>
-
-
+            </div>
         )
     }
 }

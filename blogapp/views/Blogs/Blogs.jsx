@@ -19,15 +19,20 @@ class Blogs extends React.Component {
                 <div key={blog._id}>
                     <a href={`blog/${blog._id}`} style={myStyle.font2}>{blog.title}</a>
                     <br />
-                    <p style={myStyle.font3}>{blog.body}</p>
+                    {/* <p style={myStyle.font3}>{blog.body}</p> */}
                     <h4 style={myStyle.font4}>By: {blog.author}</h4>
 
                     <form action={`/blog/${blog._id}?_method=DELETE`} method='POST'>
                   <input type='submit' value='Delete' />
                 </form>
                 <a href={`/blog/${blog._id}/edit`}><button>Edit</button></a>
-                
+                <br/>
+                <br/>
+                 <a href={'/'} style={myStyle.font5}>Back to Homepage</a>
+                 <br/>
+                 <br/>
                 </div>
+                
             ))}
             </section>
 
@@ -48,7 +53,7 @@ const myStyle = {
     backgroundAttachment: 'fixed',
     },
     mainBlog:{
-        textAlign: 'center', 
+        textAlign: 'justify', 
         background: 'rgba(50, 45, 20, .4)',
         marginTop: '100px',
         marginRight: '400px',
@@ -80,12 +85,19 @@ const myStyle = {
     fontFamily: 'Tahoma',
     },
     font4:{
-    color: 'lightcyan',
+    color: 'cyan',
     fontSize: '15px',
     textAlign: 'center center',
     margin: '30px',
     fontFamily: 'Tahoma',
-    }
+    },
+    font5:{
+        color: 'pink',
+        fontSize: '25px',
+        textAlign: 'center center',
+        margin: '30px',
+        fontFamily: 'Tahoma',
+        }
     }
 
 

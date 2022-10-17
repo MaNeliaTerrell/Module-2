@@ -17,9 +17,15 @@ class Show extends React.Component {
                     <br/>
                     <h3>{blog.body}</h3> 
                     <br/>
+                    <img src={blog.image} style={myStyle.image}></img>
+                    <br/>
                     <h3>{blog.author}</h3>
 
-
+                Click to Like:<input type='checkbox' name='likes'/>
+                <br/>
+                <a href='/blog' style={myStyle.font2}>BACK to Blog List</a>
+                <br/>
+                <a href={'/'}style={myStyle.font2}>Back to Homepage</a>
                     
             </div>
             </body>
@@ -33,7 +39,7 @@ const myStyle = {
     backgroundSize: 'cover',
     backgroundPosition: 'center center fixed',
     backgroundRepeat: 'no-repeat',
-    margin: '-8px',
+    margin: '20px',
     padding: '10px',
     width: '100%',
     backgroundAttachment: 'fixed',
@@ -44,10 +50,20 @@ const myStyle = {
     textAlign: 'center center',
     margin: '30px',
     fontFamily: 'Tahoma',
+    background: 'rgba(53, 26, 68, 0.55)',
     },
+    font2:{
+        color: 'cyan',
+        fontSize: '30px',
+        textAlign: 'center center',
+        margin: '30px',
+        fontFamily: 'Tahoma',
+    },
+    image: {
+        width: '350px',
+        height: '250px',
+    }
 }
-
-
 
 
 module.exports = Show;

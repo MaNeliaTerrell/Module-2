@@ -1,5 +1,6 @@
 const express = require('express')
 const userModel = require('../models/UserSchema')
+const bcrypt = require('bcryptjs')
 
 const router = express.Router()
 
@@ -9,26 +10,33 @@ router.get('/', async (req, res) => {
     try {
         const users = await userModel.find({})
         res.send(users)
+
     } catch (error) {
         console.log(error);
         res.status(403).send('Cannot Get')
     }
 })
 
-// GET: Blog by ID
-router.get('/:id', async (req, res) => {
-    try {
-        const user = await userModel.findById(req.params.id)
-        res.send(user)
-    } catch (error) {
-        console.log(error);
-        res.status(403).send('Cannot get')
-    }
+// // GET: Blog by ID
+// router.get('/:id', async (req, res) => {
+//     try {
+//         const user = await userModel.findById(req.params.id)
+//         res.send(user)
+//     } catch (error) {
+//         console.log(error);
+//         res.status(403).send('Cannot get')
+//     }
+// })
+
+// Render a Signup Form
+
+router.get('/signup', (req, res) =>{
+    res.render('Users/Signup')
 })
 
 // POST:  CREATE a NEW BLOG
 
-router.post('/', async (req, res) => {
+router.post('/signup', async (req, res) => {
     try {
         // to check if user already exists
         const userAlreadyExists = await userModel.find({email: req.body.email})
@@ -37,7 +45,11 @@ router.post('/', async (req, res) => {
     if(userAlreadyExists[0]) {
        return res.send("User Already Exists!");
     }
+
         // Create a new user
+        const SALT = await bcrypt.genSalt(10)
+        // reassign the password to the hash
+        req.body.password = await bcrypt.hash(req.body.password, SALT)
         const newUser = await userModel.create(req.body)
         res.send(newUser)
     } catch (error) {

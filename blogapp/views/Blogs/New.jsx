@@ -8,19 +8,33 @@ class New extends React.Component {
                 <h1>Add New Blog</h1>
 
                 <form action='/blog' method='POST'>
-                    title: <input type='text' name='title'/>
+                    title: <input type='text' name='title' style={myStyles.inputBox}/>
                     <br/>
-                    body: <input type='text' name='body'/>
+                    body: 
+                    <br/><textarea  name="body" placeholder="body" rows="20" cols="60" required />
                     <br/>
-                    author: <input type='text' name='author'/>
+                    image url: <input type='url' name='image' style={myStyles.inputBox}></input>
                     <br/>
-                    likes:<input type='text' name='likes'/>
-                    <input type='submit' value='Create New Folder'/>
+                    author: <input type='text' name='author'style={myStyles.inputBox}/>
                     <br/>
-                    sponsored: <input type='boolean'/>
+                    likes:<input type='text' name='likes'style={myStyles.inputBox}/>
+                    <br/>
+                    Create a New Blog: <input type='submit' value="Let's Go!"/>
+                    <br/>
+                    sponsored: <input type='checkbox'/>
+                    <br/>
+                    <br/>
+                    <a href={'/'}>Back to Homepage</a>
                 </form>
             </div>
         )
+    }
+}
+
+const myStyles = {
+    inputBox: {
+        height: '15px',
+        width: '350px',
     }
 }
 module.exports = New
