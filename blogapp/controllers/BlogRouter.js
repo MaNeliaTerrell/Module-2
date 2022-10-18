@@ -1,5 +1,6 @@
 const express = require('express')
 const BlogModel = require('../models/BlogSchema')
+// const Blogs = require('../views/Blogs/Blogs')
 
 const router = express.Router()
 
@@ -8,14 +9,13 @@ const router = express.Router()
 router.get('/', async (req, res) => {
     try {
         const blogs = await BlogModel.find({})
-        res.render('Blogs/Blogs', {blogs: blogs})
-        // console.log(blogs);
+        res.render('Blogs/Blogs', {blogs: blogs,
+        loggedInUser: req.session.username,})
     } catch (error) {
         console.log(error);
         res.status(403).send('Cannot Get')
     }
 })
-
 
 router.get('/new', async (req, res) => {
     try {
@@ -38,6 +38,9 @@ router.get('/:id', async (req, res) => {
         res.status(403).send('Cannot get')
     }
 })
+
+// Render the edit form
+
 router.get(`/:id/edit`, async (req, res) => {
     try{
         const blogs = await BlogModel.findById(req.params.id)
@@ -59,6 +62,8 @@ router.post("/", async (req, res) => {
       } else {
         req.body.sponsored = false;
       }
+      // set the author to the LoggedInUser
+      req.body.author = req.session.username
       const newBlog = await BlogModel.create(req.body);
       res.redirect("/blog");
     } catch (error) {

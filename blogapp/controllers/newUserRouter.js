@@ -17,17 +17,6 @@ router.get('/', async (req, res) => {
     }
 })
 
-// // GET: Blog by ID
-// router.get('/:id', async (req, res) => {
-//     try {
-//         const user = await userModel.findById(req.params.id)
-//         res.send(user)
-//     } catch (error) {
-//         console.log(error);
-//         res.status(403).send('Cannot get')
-//     }
-// })
-
 // Render a Signup Form
 
 router.get('/signup', (req, res) =>{
@@ -51,12 +40,51 @@ router.post('/signup', async (req, res) => {
         // reassign the password to the hash
         req.body.password = await bcrypt.hash(req.body.password, SALT)
         const newUser = await userModel.create(req.body)
-        res.send(newUser)
+        res.redirect('/user/signin')
     } catch (error) {
         console.log(error);
         res.status(403).send('Cannot create')
     }
 })
+
+// Render the Sign In Form
+
+router.get('/signin', (req, res) =>{
+    res.render('Users/Signin')
+})
+
+//  Sign in as User
+
+router.post('/signin', async (req, res) => {
+    try {
+        // find user by email
+        const user = await userModel.findOne({email: req.body.email})
+        if (!user) return res.send('Please check your email and password!')
+        // check if passwords match
+        const decodedPassword = await bcrypt.compare(req.body.password, user.password)
+    if (!decodedPassword) return res.send('Please check your email and password!')
+    
+    // set the user session
+    // create a new username in the session obj using the user info from db
+    req.session.username = user.username
+    req.session.loggedIn = true
+        // redirect to /blogs
+        res.redirect('/blog')
+    } catch (error) {
+        console.log(error);
+    }
+})
+
+// Sign out User and Destroy Session
+
+router.get('/signout', (req, res) => {
+    try {
+      req.session.destroy()
+      res.redirect('/')
+    } catch (error) {
+      console.log(error);
+    }
+  })
 
 //  PUT:    UPDATE BY ID
 

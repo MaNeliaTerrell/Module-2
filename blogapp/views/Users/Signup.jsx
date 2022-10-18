@@ -5,6 +5,7 @@ class Signup extends React.Component {
     render (){
         return (
             <div>
+                <Navbar/>
                 <h1>Create a New Account</h1>
             <form action='/user/signup' method='post'>
                 <fieldset>
@@ -26,7 +27,7 @@ class Signup extends React.Component {
             </form>
             <div>
             <p>
-            Already have an Account? <a href="/user/signin">Signin</a>{" "}
+            Already have an Account? <a href="/user/signin">Sign in</a>{" "}
           </p>
             </div>
             </div>

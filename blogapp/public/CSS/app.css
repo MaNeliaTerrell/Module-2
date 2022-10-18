@@ -4,7 +4,8 @@
 @import url(//db.onlinewebfonts.com/c/8ae6ef8481077b30d00858139a980140?family=BrushScriptW01);
 
 body {
-  background: url(https://cdn.pixabay.com/photo/2015/10/30/20/13/boat-1014711_960_720.jpg) no-repeat fixed;
+  /* background: url(https://cdn.pixabay.com/photo/2015/10/30/20/13/boat-1014711_960_720.jpg) no-repeat fixed; */
+  background-color: rgb(42, 54, 54);
   margin: 0;
   font-family: 'Comfortaa', cursive;
   background-position-x: center;
@@ -13,24 +14,22 @@ body {
 
 h1 {
   font-family: "Arthemis";
-  background: rgba(17, 60, 100, 0.423);
-  color: rgb(252, 249, 242);
+  background: rgba(181, 187, 184, 0.932);
+  color: rgb(32, 54, 41);
   margin: 5px;;
   margin-bottom: .5em;
   padding: 0.5em;
   text-align: center;
   font-size: 55px;
   font-stretch: ultra-expanded;
-  text-shadow: rgb(4, 54, 61) 4px 8px;
 }
 
 a {
   color: rgb(248, 246, 242);
-  font-family: 'BrushScriptW01';
-  text-shadow: 1px 1px 1px rgb(3, 98, 105);
+  font-family: 'Arthemis';
   font-size: 30px;
-  background: rgba(53, 26, 68, 0.35);
-  text-align: center center;
+  text-decoration: none;
+  margin: 30px;
 }
 
 a:hover {

@@ -8,14 +8,14 @@ class New extends React.Component {
                 <h1>Add New Blog</h1>
 
                 <form action='/blog' method='POST'>
-                    title: <input type='text' name='title' style={myStyles.inputBox}/>
+                    title: <input type='text' name='title' style={myStyles.inputBox} required/>
                     <br/>
                     body: 
                     <br/><textarea  name="body" placeholder="body" rows="20" cols="60" required />
                     <br/>
                     image url: <input type='url' name='image' style={myStyles.inputBox}></input>
                     <br/>
-                    author: <input type='text' name='author'style={myStyles.inputBox}/>
+                    author: <input type='text' name='author'style={myStyles.inputBox} required/>
                     <br/>
                     likes:<input type='text' name='likes'style={myStyles.inputBox}/>
                     <br/>
